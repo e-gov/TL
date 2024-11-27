@@ -1,5 +1,7 @@
 # Eesti.ee tegevuslubade ja majandustegevusteadete ärisündmusteenusega liidestumine.
-
+Selle dokumentatsiooniga käib kokku Tegevuslubade ja majandustegevusteadete sündmusteenuse REST teenuse OpenAPI spetsifikatsioon YAML failina. 
+YAML faili saab kasutada sisendina X-Tee REST teenuse loomisel.
+[YAML file](tegevusload-yaml-schema-v5.yaml)
 
 ## Sisukord
 [Versioonid](#versioonid) <br>
