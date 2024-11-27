@@ -1,0 +1,240 @@
+openapi: 3.0.1
+info:
+  title: Osateenuse REST API
+  description: Põhiteenusega liidestatav välise asutuse veebiteenus tegevuslubade ja majandustegevusteadete laadimiseks.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/activity-licences-api
+    description: Generated server url
+paths:
+  /activity-licences:
+    get:
+      tags:
+        - external-activity-licences-controller
+      description: Returns all activity licences in a language specified in the Accept-Language header.
+      operationId: getActivityLicences
+      parameters:
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
+            default: application/json; charset=utf-8
+            enum:
+              - application/json; charset=utf-8
+        - name: Accept-Language
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - ET
+              - EN
+              - RU
+        - name: X-Road-UserId
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User whose action initiated the request. The user ID should be prefixed with two-letter ISO country code (e.g., EE12345678901)
+        - name: X-Road-Issue
+          in: header
+          required: false
+          schema:
+            type: string
+          description: Identifies received application, issue or document that was the cause of the service request. This field may be used by the client information system to connect service requests (and responses) to working procedures.
+        - name: registrationCode
+          in: query
+          description: Can be either an Estonian registry code (issued by the Estonian Tax and Customs Board; **registrikood** in Estonian) or personal identification code (used in cases where the permit or notice has been issued to a private person; **isikukood** in Estonian).
+          required: true
+          schema:
+            type: string
+          example: 70006317
+      responses:
+        '200':
+          description: A JSON array of activity licences. If there are no activity licences for this registration code, an empty array must be returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExternalActivityLicenceDto'
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+components:
+  schemas:
+    ErrorResponseDto:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+    ContactInformationDto:
+      type: object
+      properties:
+        organizationContactFirstName:
+          type: string
+          example: Mari
+        organizationContactLastName:
+          type: string
+          example: Tamm
+        organizationContactRole:
+          type: string
+          example: Tartu peaekspert
+        organizationContactPhoneNr:
+          type: string
+          example: '6208346'
+        organizationContactEmail:
+          type: string
+          example: mari.tamm@agri.pta.ee
+        registryName:
+          type: string
+          example: Järelevalve infosüsteem
+        registryContactPhoneNr:
+          type: string
+          example: +372 605 1710
+        registryContactEmail:
+          type: string
+          example: info@pta.agri.ee
+        supervisionText:
+          type: string
+          description: This field should be used if the organization has a specific written guide about the supervision (Järelevalve) in the field of a certain licence or notice.
+          example: Toidu ja toidu käitlemise nõuetekohasust kontrollib PTA. Toidu käitlemise nõuetekohasuse hindamise eest tasutakse järelevalvetasu.
+        supervisionLink:
+          type: string
+          description: This field goes together with "supervisionText" and gives an option to attach an organization's website's URL.
+          example: https://pta.agri.ee/jarelevalve-korraldus-ja-tulemused/jarelevalve-korraldus/tasud-ja-riigiloivud
+    DeepLinkDto:
+      required:
+        - deepLinkRead
+      type: object
+      properties:
+        deepLinkRead:
+          type: string
+          example: https://portaal.agri.ee/epm-portal-ng/esileht.html
+        deepLinkUpdate:
+          type: string
+          example: https://portaal.agri.ee/epm-portal-ng/esileht.html
+        deepLinkSuspend:
+          type: string
+          example: https://portaal.agri.ee/epm-portal-ng/esileht.html
+        deepLinkCancel:
+          type: string
+          example: https://portaal.agri.ee/epm-portal-ng/esileht.html
+    ExternalActivityLicenceDto:
+      type: object
+      properties:
+        lang:
+          type: string
+          description: Language of the returned response data
+          example: ET
+          enum:
+            - ET
+            - EN
+            - RU
+        type:
+          type: string
+          description: |
+            Type is an enum field which can have 2 values:
+            * NOTICE - Majandustegevusteade (Economic Activity Notice)
+            * LICENCE - Tegevusluba (Business Licence)
+          example: LICENCE
+          enum:
+            - NOTICE
+            - LICENCE
+        principalActivity:
+          type: string
+          example: Mitteloomse toidu ja liittoidu käitlemine
+        status:
+          type: string
+          example: VALID
+          enum:
+            - PENDING
+            - VALID
+            - SUSPENDED
+            - INVALID
+        documentCode:
+          type: string
+          example: '6433'
+        documentCodeType:
+          type: string
+          description: |
+            This field can be used to specify the type of licence /  notice code (number). The recommended values are:
+            * Tegevusloa number (Business licence number)
+            * Majandustegevusteate number (Economic Activity Notice number)
+          example: Tegevusloa number
+        validFrom:
+          type: string
+          description: If the value is provided as a specific date, DD.MM.YYYY format must be used.
+          example: 12.04.2014
+        validTo:
+          type: string
+          description: If the value is provided as a specific date, DD.MM.YYYY format must be used.
+          example: Tähtajatu
+        validDateType:
+          type: string
+          description: This field can be used to specify the type of the date range. The recommended value of the type of the date range is "Tegevusloa / Majandustegevusteate kehtivusaja vahemik".
+          example: Tegevusloa kehtivusaja vahemik
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationDto'
+        publishedByOrganizationName:
+          type: string
+          example: Põllumajandus- ja Toiduamet
+        publishedByOrganizationLink:
+          type: string
+          example: https://pta.agri.ee/
+        deepLink:
+          $ref: '#/components/schemas/DeepLinkDto'
+        contactInformation:
+          $ref: '#/components/schemas/ContactInformationDto'
+    FieldOfActivityDto:
+      type: object
+      properties:
+        fieldOfActivityName:
+          type: string
+          example: Kala käitlemine
+        status:
+          type: string
+          example: VALID
+          enum:
+            - VALID
+            - SUSPENDED
+            - INVALID
+      description: If the owner of the licence / notice has multiple locations but only one field of activity (tegevusala), then that field of activity should be added under each location.
+    LocationDto:
+      type: object
+      properties:
+        adsOid:
+          type: string
+          description: ID of a specific location address in the Estonian Public service of the Address Data System (ADS-OID).
+          example: ME01656795
+        addressText:
+          type: string
+          description: Full address format i.e "Harju maakond, Tallinn, Põhja-Tallinna linnaosa, Sõle tn 23".
+          example: Laki 11a, Mustamäe linnaosa, Tallinn, Harjumaa, 12915
+        locationName:
+          type: string
+          description: This field can be used if it is necessary to specify the name of a location (e.g. the name / URL of a web-shop or the name of a pharmacy). It is business critical to specify this field if both addressText and adsOid are left empty.
+        status:
+          type: string
+          example: VALID
+          enum:
+            - VALID
+            - SUSPENDED
+            - INVALID
+        fieldOfActivities:
+          type: array
+          description: If the owner of the licence / notice has multiple locations but only one field of activity (tegevusala), then that field of activity should be added under each location.
+          items:
+            $ref: '#/components/schemas/FieldOfActivityDto'
