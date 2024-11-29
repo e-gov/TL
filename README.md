@@ -1,4 +1,5 @@
-# Eesti.ee tegevuslubade ja majandustegevusteadete ärisündmusteenusega liidestumine.
+# Eesti.ee tegevuslubade ja majandustegevusteadete ärisündmusteenusega liidestumine
+
 Selle dokumentatsiooniga käib kokku Tegevuslubade ja majandustegevusteadete sündmusteenuse REST teenuse OpenAPI spetsifikatsioon YAML failina. 
 YAML faili saab kasutada sisendina X-Tee REST teenuse loomisel.
 [YAML file](tegevusload-yaml-schema-v5.yaml)
@@ -37,7 +38,7 @@ Dokumendi esimesed 5 versiooni jagati eesti.ee tegevuslubade ja majandustegevust
 |2.0|Hanna-Liisa Vilbiks (Helmes) Marten Tall (Helmes)|17.07.2024|REST päringu formaadi ja kuju täpsustamine. _*NB!*_ YAML-i versioon on kuni REST teenuse live’ni 1.0.0.|
 |3.0|Marten Tall (Helmes)|11.10.2024|X-Tee päiste lisamine päringu tegija identifitseerimiseks. Accept päiste lisamine. REST päringu GET parameetri nimetuse parandus.|
 |4.0|Marten Tall (Helmes)|21.10.2024|Mitte-kohustusliku X-Tee päise X-Road-Issue lisamine. HTTP koodi 403 Forbidden lisamine.|
-|5.0|Jens-Kristjan Liivand (Helmes)|13.11.2024|REST päringu vastuse kuju defineerimine ja täpsustus|
+|5.0 <br> praegune versioon|Jens-Kristjan Liivand (Helmes)|13.11.2024|REST päringu vastuse kuju defineerimine ja täpsustus|
 
 
 ## 1 Sissejuhatus
