@@ -234,7 +234,7 @@ Tabel 1 annab ülevaate andmemudeli väljadest koos selgitusega.
 | **lang** | JAH | EN, RU või EE ehk millises keeles* päringu vastuse andmed on. <br><br> *2024. aasta projekti raames on enamikul liidestuvatel osapooltel võimalik andmeid edastada vaid eesti keeles. |
 | **type** | JAH | Näitab, kas tegemist on majandustegevusteate või tegevusloaga: <br> • `NOTICE` - Majandustegevusteade <br> • `LICENCE` - Tegevusluba |
 | **principalActivity** | JAH | Põhiline tegevusala – üldisem tegevusala või valdkond. Tegevusalad (`fieldOfActivities`) on sellest eraldi. |
-| **status** | JAH | Tegevusloa või majandustegevusteate staatus, mis võivad olla 4 kindlat varianti: <br> 1. `VALID` - Kehtiv <br> 2. `PENDING` - Ootel <br> 3. `SUSPENDED` - Peatatud <br> 4. `INVALID` - Kehtetu* **PS! INVALID staatuses kirjeid päringusse mitte lisada.**|
+| **status** | JAH | Tegevusloa või majandustegevusteate staatus, mis võivad olla 4 kindlat varianti: <br> 1. `VALID` - Kehtiv <br> 2. `PENDING` - Ootel <br> 3. `SUSPENDED` - Peatatud <br> 4. `INVALID` - Kehtetu* <br> **PS! INVALID staatuses kirjeid päringusse mitte lisada.** |
 | **documentCode** | JAH | Loa või teate number ehk tunnus. Enamikul juhtudel "Tegevusloa number". |
 | **documentCodeType** | EI | Loa või teate tunnuse tüüp. Kasutatakse, kui `documentCode` erineb tavapärasest. |
 | **validFrom** | EI | Loa / teate kehtivusaja alguse kuupäev formaadis `dd.mm.yyyy`. |
