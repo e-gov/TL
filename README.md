@@ -231,37 +231,21 @@ Tabel 1 annab ülevaate andmemudeli väljadest koos selgitusega.
 
 | Andmeväli | Kohustuslikkus | Selgitus |
 | :--- | :--- | :--- |
-| **lang** | JAH | EN, RU või EE ehk millises keeles* päringu vastuse andmed on. <br><br> *2024. aasta projekti raames on enamikul liidestuvatel osapooltel võimalik andmeid edastada vaid eesti keeles. See väli on lisatud tuleviku jaoks. |
-| **type** | JAH | Näitab, kas tegemist on majandustegevusteate või tegevusloaga. <br> • `NOTICE` - Majandustegevusteade <br> • `LICENCE` - Tegevusluba |
+| **lang** | JAH | EN, RU või EE ehk millises keeles* päringu vastuse andmed on. <br><br> *2024. aasta projekti raames on enamikul liidestuvatel osapooltel võimalik andmeid edastada vaid eesti keeles. |
+| **type** | JAH | Näitab, kas tegemist on majandustegevusteate või tegevusloaga: <br> • `NOTICE` - Majandustegevusteade <br> • `LICENCE` - Tegevusluba |
 | **principalActivity** | JAH | Põhiline tegevusala – üldisem tegevusala või valdkond. Tegevusalad (`fieldOfActivities`) on sellest eraldi. |
-| **status** | JAH | Staatused: <br> 1. `VALID` - Kehtiv <br> 2. `PENDING` - Ootel <br> 3. `SUSPENDED` - Peatatud <br> 4. `INVALID` - Kehtetu* <br><br> *Kehtetuid lube/teateid 2024. aasta raames eesti.ee-sse ei laeta. |
-| **documentCode** | JAH | Loa või teate number ehk tunnus. Tavaliselt "Tegevusloa number", kuid võib olla ka muu dokument või kood. |
-| **documentCodeType** | EI - Täpsustamise eesmärgil | Loa või teate tunnuse tüüp. Kasutatakse, kui `documentCode` erineb tavapärastest tüüpidest. |
-| **validFrom** | EI | Kehtivuse alguse kuupäev (`dd.mm.yyyy`). Tegemist on tekstiväljaga. |
-| **validTo** | EI | Kehtivuse lõpu kuupäev (`dd.mm.yyyy`). Võib olla ka väärtus "Tähtajatu". |
-| **validDateType** | EI - Täpsustamise eesmärgil | Kehtivusvahemiku tüüp. Kasutatakse, kui `validTo` ja `validFrom` näitavad mingit muud ajavahemikku. |
-| **locations.adsOid** | EI | Tegevuskoha ADS OID (aadressiandmete süsteemi objekti ID). |
-| **locations[].addressText** | JAH | Tegevuskoha aadress tekstina. <br> Näide: *Lõõtsa tn 6, Tallinn*. |
-| **locations[].locationName** | JAH* | Tegevuskoha nimetus (nt poe nimi). <br> *Kohustuslik, kui puudub `addressText` või `adsOid`. |
-| **locations[].status** | EI | Tegevuskoha staatus: `VALID` (vaikimisi) või `SUSPENDED`. |
-| **locations[].fieldOfActivities[].fieldOfActivityName** | JAH | Tegevusala nimetus eesti keeles. Kui tegevusala kehtib kõikide asukohtade kohta, lisada see iga asukoha alla. |
-| **locations[].fieldOfActivities[].status** | EI | Tegevusala staatus: `VALID` (vaikimisi) või `SUSPENDED`. |
-| **publishedByOrganizationName** | JAH | Loa väljastanud asutuse täispikk nimetus. |
-| **publishedByOrganizationLink** | JAH | Loa väljastanud asutuse kodulehe URL. |
-| **deepLinks.deepLinkRead** | JAH | URL registrisse, kus saab andmeid vaadata. **Esmases faasis kohustuslik.** |
-| **deepLinks.deepLinkUpdate** | EI | URL registrisse andmete muutmiseks. |
-| **deepLinks.deepLinkSuspend** | EI | URL registrisse andmete peatamiseks. |
-| **deepLinks.deepLinkCancel** | EI | URL registrisse andmete tühistamiseks. |
-| **contactInformation.organizationContactFirstName** | EI | Kontakti eesnimi. |
-| **contactInformation.organizationContactLastName** | EI | Kontakti perekonnanimi. |
-| **contactInformation.organizationContactRole** | EI | Kontakti roll asutuses. |
-| **contactInformation.organizationContactPhoneNr** | JAH | Kontakti telefoninumber. |
-| **contactInformation.organizationContactEmail** | JAH | Kontakti e-posti aadress. |
-| **contactInformation.registryName** | JAH | Algandmete registri nimetus. |
-| **contactInformation.registryContactPhoneNr** | JAH | Registri üldine kontakttelefon. |
-| **contactInformation.registryContactEmail** | JAH | Registri üldine e-posti aadress. |
-| **contactInformation.supervisionText** | EI | Järelevalve infotekst (max 2 lauset). |
-| **contactInformation.supervisionLink** | EI | URL täpsema järelevalve info juurde. |
+| **status** | JAH | Tegevusloa või majandustegevusteate staatus, mis võivad olla 4 kindlat varianti: <br> 1. `VALID` - Kehtiv <br> 2. `PENDING` - Ootel <br> 3. `SUSPENDED` - Peatatud <br> 4. `INVALID` - Kehtetu* |
+| **documentCode** | JAH | Loa või teate number ehk tunnus. Enamikul juhtudel "Tegevusloa number". |
+| **documentCodeType** | EI | Loa või teate tunnuse tüüp. Kasutatakse, kui `documentCode` erineb tavapärasest. |
+| **validFrom** | EI | Loa / teate kehtivusaja alguse kuupäev formaadis `dd.mm.yyyy`. |
+| **validTo** | EI | Loa / teate kehtivusaja lõpu kuupäev formaadis `dd.mm.yyyy`. Võib olla ka "Tähtajatu". |
+| **validDateType** | EI | Loa / teate kehtivusvahemiku tüüp, kui see ei näita tavalist kehtivust. |
+| **locations.adsOid** | EI | Loa / teate tegevuskoha ADS OID objekti ID. |
+| **locations[].addressText** | JAH | Loa / teate tegevuskoha aadress tekstina. |
+| **locations[].locationName** | JAH* | Tegevuskoha nimetus. Kohustuslik, kui puudub `addressText`. |
+| **locations[].status** | EI | Tegevuskoha staatus: `VALID` või `SUSPENDED`. |
+| **locations[].fieldOfActivities[].fieldOfActivityName** | JAH | Loa / teate tegevusala nimetus eesti keeles. |
+| **locations[].fieldOfActivities[].status** | EI | Tegevusala staatus: `VALID` või `SUSPENDED`. |
 
 ## 6 Andmemudeli näited JSON kujul
 
