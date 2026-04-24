@@ -227,40 +227,41 @@ Joonis 2. Tegevuslubadeja majandustegevusteadete andmemudel eesti.ee-s koos maja
 
 Tabel 1 annab ülevaate andmemudeli väljadest koos selgitusega.
 
-Tabel 1.Tegevuslubade ja majandustegevusteadete andmemudeli kohustuslikkus ja selgitused.
+Tabel 1. Tegevuslubade ja majandustegevusteadete andmemudeli kohustuslikkus ja selgitused.
+
 | Andmeväli | Kohustuslikkus | Selgitus |
-| -- | -- | -- |
-|	lang	|	JAH	|	EN, RU või EE ehk millises keeles* päringu vastuse andmed on. <br> *2024. aasta projekti raames on enamik liidestuvatel osapooltel võimalik lubade ja teadete andmeid edastada vaid eesti keeles. See väli on andmemudelisse lisatud eelkõige tuleviku muudatuste jaoks, kui tekib ka võimalus andmeid inglise keeles edastada.	|
-|	type 	|	JAH	|	Näitab, kas tegemist on majandustegevusteate või tegevusloaga.	| NOTICE - Majandustegevusteade (Economic Activity Notice) <br> LICENCE - Tegevusluba (Business Licence) 	
-|	principalActivity	|	JAH	|	 Põhiline tegevusala – üldisem tegevusala või valdkond. Tegevusalad ehk field of activities on sellest eraldi. (Näited on eraldi peatükis)	|
-|	status	|	JAH	|	Tegevusloa või majandustegevusteate staatus, mis võivad olla 4 kindlat varianti:	<br>1.VALID - Kehtiv	<br>2.PENDING - Ootel	<br>3.SUSPENDED - Peatatud	<br>4.INVALID - Kehtetu* <br> * *kehtetuid lube ega teateid 2024. aasta tegevuslubade ja majandustegevusteadete sündmusteenuse projekti raames eesti.ee-sse ei laeta. See staatuse valik jääb sisse potentsiaalsete tulevikutööde tõttu	|
-|	documentCode	|	JAH	|	Loa või teate number ehk tunnus. Enamik juhtudel on selle välja väärtus kas „Majandustegevusteate number“ või „Tegevusloa number“. Kuid osadel juhtudel võib loa /  teate tunnuseks olla mingi muu dokument või kood.	|
-|	documentCodeType	|	EI - Täpsustamise eesmärgil|	Loa või teate tunnuse tüüp. Seda välja võib kasutada, kui eelmine väli `documentCode` erineb tavalisetest loa / teate tunnuse tüüpidest. Iga asutus saab ise otsustada ja paika panna reeglid, mille alusel „documentCodeType“ väli väärtustada.	|
-|	validFrom	|	EI	|	Loa / teate kehtivusaja alguse kuupäev formaadis dd.mm.yyyy. See on tavaline tekstiväli mitte kindla formaadiga kuupäeva väli. Kui loal / teatel pole kehtivuse alguse kuupäeva siis eesti.ee-s seda välja ei kuvata.|
-|	validTo	|	EI	|	Loa / teate kehtivusaja lõpu  kuupäev formaadis dd.mm.yyyy. See on tavaline tekstiväli mitte kindla formaadiga kuupäeva väli. Mitmel juhul on välja väärtus „Tähtajatu“.	Kui loal / teatel pole kehtivuse lõpu väärtust siis eesti.ee-s seda välja ei kuvata.		|
-|	validDateType	|	EI - Täpsustamise eesmärgil|	Loa / teate kehtivusvahemiku tüüp. Seda välja võib kasutada, kui validTo ja validFrom väljad ei näita loa / teate kehtivust, vaid mingit muud ajavahemikku.	Iga asutus saab ise otsustada ja paika panna reeglid, mille alusel `validDateType` väli väärtustada.	 |
-|	locations.adsOid	|	EI	|	Loa / teate tegevuskoha ADS OID ehk aadressiandmete infosüsteemi konkreetse aadressi objekti ID. Iga asutus saab ise otsustada, kas neil on võimalik tegevuskoha aadressi ADS OID eesti.ee-le saata. Liidestumise projekti esmaprioriteet on saada andmevahetuse kaudu aadress tekstikujul ehk vaja väärtustada väli „addressText“.|
-|	locations[].addressText	|	JAH	|	Loa / teate tegevuskoha aadress teksti kujul. Ideaalis võiks formaat olla järgnev: <br>„Lõõtsa tn 6, Lasnamäe linnaosa, Tallinn, Harju maakond“;	<br> „Veskitammi tn 4, Laagri alevik, Saue vald, Harju maakond“		|
-|	locations[].locationName	|	JAH*	|	Loa / teate tegevuskoha nimetus. Nimetus võib olla füüsilise või veebipoe nimi, meditsiiniasutuse üldnimetus jms. <br> *Selle välja väärtustamine on äriliselt kohustuslik, kui loal / teatel puudub tekstikujul aadress või ADS OID. Näiteks taksojuhi sõidukikaartidel ei ole konkreetset tegevuskohta ega juriidilist aadressi, vaid teeninduspiirkond.	|
-|	locations[].status	|	EI	|	Loa / teate tegevuskoha staatus. 	Tegevuskohtade puhul eristame 2 staatust:	<br>1.VALID (Kehtiv) – tegevuskoht on kehtiv. Vaikimisi on tegevuskoht VALID staatuses.	<br> 2. SUSPENDED (Peatatud) – osa asutuste andmemudeli kohaselt võib tegevusluba olla kehtivas staatuses, kuid selle 1 kuni mitu tegevuskohta on peatatud staatuses.	<br> Iga asutus saab ise otsustada ja paika panna reeglid, millal saata eesti.ee-le tegevuskoha staatus „SUSPENDED“. Kui tegemist on asutusega, mille lubade / teadete tegevuskohtadel pole staatust, siis andmevahetuses tuleb edastada „status“: null. Küll aga, kui „mõtteliselt“ või äriliselt on siiski võimalik eristada tegevuskoha staatust kui „VALID“, siis võiks saata selle väärtuse. Kui `locations[].status = null` või „“, siis eesti.ee loeb selle vaikimisi „VALID“ staatuseks.	|
-|	locations[].fieldOfActivities[].fieldOfActivityName	|	JAH	|	 Loa /  teate tegevusala nimetus eesti keeles. 	Kui loal / teatel on **mitu tegevuskohta, aga ainult 1 tegevusala**, mis kehtib kõikide kohtade puhul, siis lisada see tegevusala iga location[].fieldOfActivites alla. Kui loal / teatel on **mitu tegevuskohta ning iga tegevuskoha käivad vastavad erinevad tegevusalad**, siis lisada need vastavalt õige tegevuskoha alla.			|
-|	locations[].fieldOfActivities[].status	|	EI	|	 Loa / teate tegevusala staatus			Tegevusalade puhul eristame 2 staatust: <br>1.VALID (Kehtiv) – tegevusala on kehtiv. **Vaikimisi on tegevusala VALID staatuses**. <br>	2.SUSPENDED (Peatatud) – osa asutuste andmemudeli kohaselt võib tegevusluba olla kehtivas staatuses, kuid selle 1 kuni mitu tegevusala on peatatud staatuses.	<br> Kui tegemist on asutusega, mille lubade / teadete tegevusaladel pole staatust, siis andmevahetuses tuleb edastada „status“: null. 	Küll aga, kui „mõtteliselt“ või äriliselt on siiski võimalik eristada tegevusala staatust kui „VALID“, siis võiks saata selle väärtuse.	Kui locations[].fieldOfActivities[].status = null või „“, siis eesti.ee loeb selle vaikimisi „VALID“ staatuseks.	|
-|	publishedByOrganizationName	|	JAH	|	 Loa / teate väljastanud asutuse täispikk nimetus* <br> *vastavalt keele parameetrile kas eesti või inglise keeles. Vaikimisi võib nimetus olla alati eesti keeles.		|
-|	publishedByOrganizationLink	|	JAH	|	 Loa / teate väljastanud asutuse kodulehe URL	|
-|	deepLinks.deepLinkRead	|	JAH	|	Loa / teate algandmete registrisse / kliendiportaali suunav URL, kus kasutaja saab loa / teate andmeid vaadata. Iga asutus otsustab ise, millise registri / portaali linki on kõige mõistlikum deepLinks väljadel eesti.ee-le edastada. **Liidestumise esmases faasis võiks asutus edastada eesti.ee-le vähemalt loa / teate vaatamise URL-i (liht-või süvalink)**	|
-|	deepLinks.deepLinkUpdate	|	EI	|	Loa / teate algandmete registrisse / kliendiportaali suunav URL, kus kasutaja saab luba / teadet muuta.	|
-|	deepLinks.deepLinkSuspend	|	EI	|	Loa / teate algandmete registrisse / kliendiportaali suunav URL, kus kasutaja saab luba / teadet peatada.	|
-|	deepLinks.deepLinkCancel	|	EI	|	Loa / teate algandmete registrisse / kliendiportaali suunav URL, kus kasutaja saab luba / teadet tühistada.	|
-|	contactInformation.organizationContactFirstName	|	EI	|	Loa / teate väljastanud asutuse loa / teate tegevusalaga seotud valdkonna kontakti eesnimi.	|
-|	contactInformation.organizationContactLastName	|	EI	|	Loa / teate väljastanud asutuse loa / teate tegevusalaga seotud valdkonna kontakti perekonnanimi.	|
-|	contactInformation.organizationContactRole	|	EI	|	 Loa / teate väljastanud asutuse loa / teate tegevusalaga seotud valdkonna kontakti roll.	|
-|	contactInformation.organizationContactPhoneNr	|	JAH	|	 Loa / teate väljastanud asutuse loa / teate tegevusalaga seotud valdkonna kontakti telefoninumber.	|	
-|	contactInformation.organizationContactEmail	|	JAH	|	 Loa / teate väljastanud asutuse loa / teate tegevusalaga seotud valdkonna kontakti emaili aadress.	|		
-|	contactInformation.registryName	|	JAH	|	 Loa / teate algandmete registri nimetus* <br> *vastavalt keele parameetrile kas eesti või inglise keeles. Vaikimisi võib nimetus olla alati eesti keeles. 	|
-|	contactInformation.registryContactPhoneNr	|	JAH	|	 Loa / teate algandmete registri kontakti telefoni number	|
-|	contactInformation.registryContactEmail	|	JAH	|	 Loa / teate algandmete registri kontakti emaili aadress	|				
-|	contactInformation.supervisionText	|	EI	|	 Loa / teate valdkonnale rakenduvatest erinõuetest tulenev järelevalve infotekst.	Infotekst võiks olla maksimaalselt 2 lühikest lauset.	|
-|	contactInformation.supervisionLink	|	EI	|	Järelevalve infotekstiga kokku käiv asutuse portaali URL, kus on pikemalt ja täpsemalt selle loa / teate valdkonna järelevalvest juttu.	|
+| :--- | :--- | :--- |
+| **lang** | JAH | EN, RU või EE ehk millises keeles* päringu vastuse andmed on. <br><br> *2024. aasta projekti raames on enamikul liidestuvatel osapooltel võimalik lubade ja teadete andmeid edastada vaid eesti keeles. See väli on lisatud tuleviku muudatuste jaoks. |
+| **type** | JAH | Näitab, kas tegemist on majandustegevusteate või tegevusloaga: <br> • `NOTICE` - Majandustegevusteade <br> • `LICENCE` - Tegevusluba |
+| **principalActivity** | JAH | Põhiline tegevusala – üldisem tegevusala või valdkond. Tegevusalad (`fieldOfActivities`) on sellest eraldi. |
+| **status** | JAH | Staatused: <br> 1. `VALID` - Kehtiv <br> 2. `PENDING` - Ootel <br> 3. `SUSPENDED` - Peatatud <br> 4. `INVALID` - Kehtetu* <br><br> *Kehtetuid lube/teateid 2024. aasta raames eesti.ee-sse ei laeta. |
+| **documentCode** | JAH | Loa või teate number ehk tunnus. Tavaliselt "Tegevusloa number", kuid võib olla ka muu dokument või kood. |
+| **documentCodeType** | EI | Loa või teate tunnuse tüüp. Kasutatakse, kui `documentCode` erineb tavapärastest tüüpidest. |
+| **validFrom** | EI | Kehtivuse alguse kuupäev (`dd.mm.yyyy`). Tegemist on tekstiväljaga. Kui väärtus puudub, siis eesti.ee-s seda ei kuvata. |
+| **validTo** | EI | Kehtivuse lõpu kuupäev (`dd.mm.yyyy`). Võib olla ka väärtus "Tähtajatu". Kui väärtus puudub, siis eesti.ee-s seda ei kuvata. |
+| **validDateType** | EI | Kehtivusvahemiku tüüp. Kasutatakse, kui `validTo` ja `validFrom` näitavad mingit muud ajavahemikku. |
+| **locations.adsOid** | EI | Tegevuskoha ADS OID (aadressiandmete süsteemi objekti ID). |
+| **locations[].addressText** | JAH | Tegevuskoha aadress tekstina. <br> Näide: *Lõõtsa tn 6, Lasnamäe linnaosa, Tallinn, Harju maakond*. |
+| **locations[].locationName** | JAH* | Tegevuskoha nimetus (nt poe nimi). <br> *Kohustuslik, kui puudub `addressText` või `adsOid` (nt taksojuhi teeninduspiirkond). |
+| **locations[].status** | EI | Tegevuskoha staatus: `VALID` (vaikimisi) või `SUSPENDED`. Kui väärtus on `null`, loetakse see kehtivaks. |
+| **locations[].fieldOfActivities[].fieldOfActivityName** | JAH | Tegevusala nimetus eesti keeles. Kui tegevusala kehtib kõikide asukohtade kohta, lisada see iga asukoha alla. |
+| **locations[].fieldOfActivities[].status** | EI | Tegevusala staatus: `VALID` (vaikimisi) või `SUSPENDED`. |
+| **publishedByOrganizationName** | JAH | Loa väljastanud asutuse täispikk nimetus. Vaikimisi eesti keeles. |
+| **publishedByOrganizationLink** | JAH | Loa väljastanud asutuse kodulehe URL. |
+| **deepLinks.deepLinkRead** | JAH | URL registrisse, kus kasutaja saab andmeid vaadata. **Liidestumise esmases faasis kohustuslik.** |
+| **deepLinks.deepLinkUpdate** | EI | URL registrisse andmete muutmiseks. |
+| **deepLinks.deepLinkSuspend** | EI | URL registrisse andmete peatamiseks. |
+| **deepLinks.deepLinkCancel** | EI | URL registrisse andmete tühistamiseks. |
+| **contactInformation.organizationContactFirstName** | EI | Väljastanud asutuse valdkondliku kontakti eesnimi. |
+| **contactInformation.organizationContactLastName** | EI | Väljastanud asutuse valdkondliku kontakti perekonnanimi. |
+| **contactInformation.organizationContactRole** | EI | Kontakti roll asutuses. |
+| **contactInformation.organizationContactPhoneNr** | JAH | Kontakti telefoninumber. |
+| **contactInformation.organizationContactEmail** | JAH | Kontakti e-posti aadress. |
+| **contactInformation.registryName** | JAH | Algandmete registri nimetus (nt "Majandustegevuse register"). |
+| **contactInformation.registryContactPhoneNr** | JAH | Registri üldine kontakttelefon. |
+| **contactInformation.registryContactEmail** | JAH | Registri üldine e-posti aadress. |
+| **contactInformation.supervisionText** | EI | Järelevalve infotekst (max 2 lühikest lauset). |
+| **contactInformation.supervisionLink** | EI | URL täpsema järelevalve info juurde. |
 
 
 ## 6 Andmemudeli näited JSON kujul
