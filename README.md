@@ -1,6 +1,6 @@
-# Eesti.ee tegevuslubade ja majandustegevusteadete ärisündmusteenusega liidestumine
+# Eesti.ee "Tegevusload ja -teated" teenusega liidestumine
 
-Selle dokumentatsiooniga käib kokku Tegevuslubade ja majandustegevusteadete sündmusteenuse REST teenuse OpenAPI spetsifikatsioon YAML failina. 
+Selle dokumentatsiooniga käib kokku "Tegevusload ja -teated" teenuse REST teenuse OpenAPI spetsifikatsioon YAML failina. 
 YAML faili saab kasutada sisendina X-Tee REST teenuse loomisel.
 [YAML file](tegevusload-yaml-schema-v5.yaml)
 
@@ -30,7 +30,7 @@ YAML faili saab kasutada sisendina X-Tee REST teenuse loomisel.
 ## Versioonid
 
 Küsimuste korral, täiendava teabe või abi saamiseks palume pöörduda kasutajatoe poole [help@ria.ee](mailto:help@ria.ee).
-Dokumendi esimesed 5 versiooni jagati eesti.ee tegevuslubade ja majandustegevusteadete sündmusteenuse liidestujatele PDF dokumendi kujul. Githubi on lisatud versioon 5 alates.
+Dokumendi esimesed 5 versiooni jagati eesti.ee "Tegevusload ja -teated" teenusega liidestujatele PDF dokumendi kujul. Githubi on lisatud versioon 5 alates.
 
 | Versioon | Muutja | Muutmise aeg | Kommentaar | 
 |---------|------|-----------|-------------------|
@@ -43,7 +43,7 @@ Dokumendi esimesed 5 versiooni jagati eesti.ee tegevuslubade ja majandustegevust
 
 ## 1 Sissejuhatus
 
-See dokument annab ülevaate eesti.ee’s paikneva uue ärisündmusteenuse „Ettevõtja tegevusload ja majandustegevusteated“ andmemudelist ja äriloogikast. Dokument on mõeldud eelkõige eesti.ee tegevuslubade ja majandustegevusteadete ärisündmusteenusega liidestuvatele osapooltele. Lisaks sellele dokumendile on arendustööde sisendiks REST teenuse OpenAPI 3.0 spetsifikatsioon YAML faili kujul.
+See dokument annab ülevaate eesti.ee’s paikneva teenuse „Tegevusload ja -teated“ andmemudelist ja äriloogikast. Dokument on mõeldud eelkõige teenusega liidestuvatele osapooltele. Lisaks sellele dokumendile on arendustööde sisendiks REST teenuse OpenAPI 3.0 spetsifikatsioon YAML faili kujul.
 
 
 ## 2 Sõnastik
@@ -72,13 +72,13 @@ See dokument annab ülevaate eesti.ee’s paikneva uue ärisündmusteenuse „Et
 
 ## 3 Äriloogika
 
-Tegevuslubade ja majandustegevusteadete ärisündmuse eesmärk on koondada ühte eesti.ee vaatesse kõik ettevõttele väljastatud tegevusload ja ettevõtte esitatud majandustegevusteated. See tähendab,  et ettevõtte esindajal on võimalik näha korraga erinevate Eesti riigi asutuste alla käivate tegevuslubade ja majandustegevusteadete andmeid. Neid asutusi nimetatakse selle liidestuse kontekstis „liidestuvateks asutusteks“.
-Eesti.ee Tegevuslubade ja majandustegevusteadete alamsüsteem kogub kõikidest liidestunud asutustest REST teenuse kaudu kõik kehtivad kasutaja tegevusload ja majandustegevusteated ning kuvab lõppkasutajale mugavalt ühes kohas.
-Täpsemalt loe ärisündmusteenuste kohta Riigi Infosüsteemi Ameti kodulehelt https://www.ria.ee/riigi-infosusteem/personaalriik/sundmusteenuste-platvorm ning Majandus- ja Kommunikatsiooniministeeriumi lehelt:  https://mkm.ee/digiriik-ja-uhenduvus/digiteenused/ettevotja-digivarav-ja-sundmusteenused .  
+Tegevusload ja -teated teenuse eesmärk on koondada ühte eesti.ee vaatesse kõik ettevõttele väljastatud tegevusload ja ettevõtte esitatud majandustegevusteated. See tähendab, et ettevõtte esindajal on võimalik näha korraga erinevate Eesti riigi asutuste alla käivate tegevuslubade ja majandustegevusteadete andmeid. Neid asutusi nimetatakse selle liidestuse kontekstis „liidestuvateks asutusteks“.
+Eesti.ee Tegevuslubade ja -teadete alamsüsteem kogub kõikidest liidestunud asutustest REST teenuse kaudu kõik kehtivad kasutaja tegevusload ja majandustegevusteated ning kuvab lõppkasutajale mugavalt ühes kohas.
+Täpsemalt loe teenuse kohta Riigi Infosüsteemi Ameti kodulehelt https://www.ria.ee/riigi-infosusteem/personaalriik/sundmusteenuste-platvorm ning Majandus- ja Kommunikatsiooniministeeriumi lehelt:  https://mkm.ee/digiriik-ja-uhenduvus/digiteenused/ettevotja-digivarav-ja-sundmusteenused.
 
 ## 4 Liidestumine
 
-Tegevuslubade ja majandustegevusteadete alamsüsteem liidestub iga asutuse infosüsteemiga üle REST teenuse, mis on vaja igal asutusel implementeerida eraldi. Selle ühtlustamiseks ning lihtsustamiseks oleme loonud OpenAPI spetsifikatsiooni, mille  alusel on võimalik automaatselt genereerida toimiv REST teenuse põhi koos andmemudeliga. Andmete täitmise eest vastutab iga asutus ise. Tegevuslubade ja majandustegevusteadete alamsüsteem ning asutus(t)e-vaheline suhtlus toimub üle X-Tee, et tagada andmevahetuse turvalisus, seda illustreerib Joonis 1.
+Tegevuslubade ja -teadete alamsüsteem liidestub iga asutuse infosüsteemiga üle REST teenuse, mis on vaja igal asutusel implementeerida eraldi. Selle ühtlustamiseks ning lihtsustamiseks oleme loonud OpenAPI spetsifikatsiooni, mille  alusel on võimalik automaatselt genereerida toimiv REST teenuse põhi koos andmemudeliga. Andmete täitmise eest vastutab iga asutus ise. Tegevuslubade ja -teadete alamsüsteem ning asutus(t)e-vaheline suhtlus toimub üle X-Tee, et tagada andmevahetuse turvalisus, seda illustreerib Joonis 1.
 
 Joonis 1. Riigiportaali ja asutus(t)e-vaheline liidestus.
 ![image](https://github.com/user-attachments/assets/859450ea-60b6-4592-9f10-06e15fd442b8)
@@ -189,17 +189,17 @@ Juhul kui pole midagi tagastada, siis tagastatakse tühi massiiv.
 
 ## 5 Andmemudel
 
-Ärisündmusteenuse arenduse käigus on RIA koos arenduspartneriga saanud valmis andmemudeli, mille alusel on loodud X-Tee REST teenuse spetsifikatsioon. Liidestuva asutuse ülesandeks on võtta aluseks andmemudel ning kaardistada see oma registri / infosüsteemi tegevuslubade ja majandustegevusteadete andmemudeli vastu. 
+Teenuse arenduse käigus on RIA koos arenduspartneriga saanud valmis andmemudeli, mille alusel on loodud X-Tee REST teenuse spetsifikatsioon. Liidestuva asutuse ülesandeks on võtta aluseks andmemudel ning kaardistada see oma registri / infosüsteemi tegevuslubade ja -teadete andmemudeli vastu. 
 
 ### 5.1 Kohustuslikkus
 
-Erinevate asutuste andmemudeli ja andmekomplektide terviklikkuse tõttu ei ole tegevuslubade ja majandustegevusteadete andmemudelis tehnilises mõistes*  pea ükski väli kohustuslik. Küll aga on all tabelis lisatud veerg „Kohustuslikkus“, mis annab ülevaate, **millised väljad võiks ideaalis täidetud olla.** 
+Erinevate asutuste andmemudeli ja andmekomplektide terviklikkuse tõttu ei ole tegevuslubade ja majandustegevusteadete andmemudelis tehnilises mõistes* pea ükski väli kohustuslik. Küll aga on all tabelis lisatud veerg „Kohustuslikkus“, mis annab ülevaate, **millised väljad võiks ideaalis täidetud olla.** 
 <br>
 *Tehnilises mõistes ehk REST spetsifikatsiooni järgi pole ükski väli kohustuslik ehk välja mitte täitmisel ei teki veaolukorda. 
 
 ### 5.2 Andmekoosseis
 
-Andmemudeli analüüsi käigus, kus RIA sündmusteenuse tooteomanik ning arenduspartneri osapooled kohtusid liidestuvate asutustega, leiti, **et kehtetuid MTT-sid ega TL-isid ei ole vaja eesti.ee-sse laadida.** 2024. sündmusteenuse projekti raames pole vaja andmevahetuses Kehtetuid lubasid ega teateid eesti.ee-le saata. Lisaks loa andmetele kuvatakse kasutajaliideses välja ka selle loa väljastanud asutusega ning algandmete registriga seonduvad kontaktandmed, mis on väljadel `contactInformation`.
+Andmemudeli analüüsi käigus, kus RIA teenuse tooteomanik ning arenduspartneri osapooled kohtusid liidestuvate asutustega, leiti, **et kehtetuid MTT-sid ega TL-isid ei ole vaja eesti.ee-sse laadida.** 2024. sündmusteenuse projekti raames pole vaja andmevahetuses Kehtetuid lubasid ega teateid eesti.ee-le saata. Lisaks loa andmetele kuvatakse kasutajaliideses välja ka selle loa väljastanud asutusega ning algandmete registriga seonduvad kontaktandmed, mis on väljadel `contactInformation`.
 
 ### 5.3 Süvalink
 
@@ -221,13 +221,13 @@ Joonisel 2 on näha andmemudeli väljad ja nende hierarhia. Põhiline tähelepan
 
 0 kuni mitu tegevuskohta tähendab, et osa lubadel / teadetel pole eraldi tegevuskohta (-kohti). Sellistel juhtudel edastatakse tegevuskohana ettevõtte juriidiline aadress.
 
-Joonis 2. Tegevuslubadeja majandustegevusteadete andmemudel eesti.ee-s koos majandustegevusteate näitega.
+Joonis 2. Tegevuslubadeja -teadete andmemudel eesti.ee-s koos majandustegevusteate näitega.
 ![image](https://github.com/user-attachments/assets/ce4793db-069c-4b80-b774-0dda69f0e44e)
 
 
 Tabel 1 annab ülevaate andmemudeli väljadest koos selgitusega.
 
-### Tabel 1. Tegevuslubade ja majandustegevusteadete andmemudeli kohustuslikkus ja selgitused.
+### Tabel 1. Tegevuslubade ja -teadete andmemudeli kohustuslikkus ja selgitused.
 
 | Andmeväli | Kohustuslikkus | Selgitus |
 | :--- | :--- | :--- |
@@ -249,7 +249,7 @@ Tabel 1 annab ülevaate andmemudeli väljadest koos selgitusega.
 
 ## 6 Andmemudeli näited JSON kujul
 
-Järgmises peatükis on toodud andmemudeli näited JSON kujul erinevate asutuste tegevuslubadest ja majandustegevusteadetest. Näidete eesmärk on näidata, kuidas asutuste andmekomplektid eesti.ee sündmusteenuse andmemudelisse kaardistada. 
+Järgmises peatükis on toodud andmemudeli näited JSON kujul erinevate asutuste tegevuslubadest ja majandustegevusteadetest. Näidete eesmärk on näidata, kuidas asutuste andmekomplektid eesti.ee paiknevasse andmemudelisse kaardistada. 
 
 Andmed on võetud avalikult kättesaadavatest registritest.
 
