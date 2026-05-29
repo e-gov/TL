@@ -72,8 +72,8 @@ See dokument annab ülevaate eesti.ee’s paikneva teenuse „Tegevusload ja -te
 
 ## 3 Äriloogika
 
-Tegevusload ja -teated teenuse eesmärk on koondada ühte eesti.ee vaatesse kõik ettevõttele väljastatud tegevusload ja ettevõtte esitatud majandustegevusteated. See tähendab, et ettevõtte esindajal on võimalik näha korraga erinevate Eesti riigi asutuste alla käivate tegevuslubade ja majandustegevusteadete andmeid. Neid asutusi nimetatakse selle liidestuse kontekstis „liidestuvateks asutusteks“.
-Eesti.ee Tegevuslubade ja -teadete alamsüsteem kogub kõikidest liidestunud asutustest REST teenuse kaudu kõik kehtivad kasutaja tegevusload ja majandustegevusteated ning kuvab lõppkasutajale mugavalt ühes kohas.
+Tegevusload ja -teated teenuse eesmärk on koondada ühte eesti.ee vaatesse kõik **kehtivad** ettevõttele väljastatud tegevusload ja ettevõtte esitatud majandustegevusteated. See tähendab, et ettevõtte esindajal on võimalik näha korraga erinevate Eesti riigi asutuste alla käivate tegevuslubade ja majandustegevusteadete andmeid. Neid asutusi nimetatakse selle liidestuse kontekstis „liidestuvateks asutusteks“.
+Eesti.ee Tegevuslubade ja -teadete alamsüsteem kogub kõikidest liidestunud asutustest REST teenuse kaudu kõik ettevõttele väljastatud **kehtivad** tegevusload ja majandustegevusteated ning kuvab lõppkasutajale mugavalt ühes kohas.
 Täpsemalt loe teenuse kohta Riigi Infosüsteemi Ameti kodulehelt https://www.ria.ee/riigi-infosusteem/personaalriik/sundmusteenuste-platvorm ning Majandus- ja Kommunikatsiooniministeeriumi lehelt:  https://mkm.ee/digiriik-ja-uhenduvus/digiteenused/ettevotja-digivarav-ja-sundmusteenused.
 
 ## 4 Liidestumine
